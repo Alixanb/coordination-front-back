@@ -1,4 +1,3 @@
-```markdown
 # Sticky Notes
 
 Application de prise de notes avec authentification, catégorisation et gestion complète des notes.
@@ -27,4 +26,3 @@ Le script démarre le backend (port 9090) et le frontend (port 4200), puis ouvre
 - **Backend (Java)** — routes et logique métier
 - **Frontend (Jest)** — comportement des composants
 - **E2E (Cypress)** — parcours utilisateur complets
-```
