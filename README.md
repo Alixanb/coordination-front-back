@@ -16,10 +16,10 @@ Application de prise de notes avec authentification, catégorisation et gestion 
 Le script démarre le backend (port 9090) et le frontend (port 4200), puis ouvre **http://localhost:4200**.
 
 **Comptes de test :**
-| Rôle | Utilisateur | Mot de passe |
-|------|-------------|--------------|
-| Admin | `admin` | `password` |
-| Utilisateur | `user` | `password` |
+| Rôle          | Utilisateur | Mot de passe |
+| ------------- | ----------- | ------------ |
+| Admin         | `admin`     | `password`   |
+| Utilisateur   | `user`      | `password`   |
 
 ## Tests
 
