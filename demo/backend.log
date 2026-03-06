@@ -1,0 +1,124 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------------< com.example:demo >--------------------------
+[INFO] Building demo 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:4.0.1:run (default-cli) > test-compile @ demo >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ demo ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ demo ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 18 source files with javac [debug parameters release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ demo ---
+[INFO] skip non existing resourceDirectory /Users/tod/Desktop/Projets/Ynov/M2/Coordination/demo/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ demo ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot:4.0.1:run (default-cli) < test-compile @ demo <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:4.0.1:run (default-cli) @ demo ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.1)
+
+2026-02-11T12:15:42.201+01:00  INFO 81966 --- [           main] com.example.demo.DemoApplication         : Starting DemoApplication using Java 25.0.2 with PID 81966 (/Users/tod/Desktop/Projets/Ynov/M2/Coordination/demo/target/classes started by tod in /Users/tod/Desktop/Projets/Ynov/M2/Coordination/demo)
+2026-02-11T12:15:42.203+01:00  INFO 81966 --- [           main] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-02-11T12:15:42.540+01:00  INFO 81966 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-11T12:15:42.562+01:00  INFO 81966 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 3 JPA repository interfaces.
+2026-02-11T12:15:42.773+01:00  INFO 81966 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 9090 (http)
+2026-02-11T12:15:42.779+01:00  INFO 81966 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-02-11T12:15:42.779+01:00  INFO 81966 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-11T12:15:42.808+01:00  INFO 81966 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 582 ms
+2026-02-11T12:15:42.866+01:00  INFO 81966 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-02-11T12:15:42.948+01:00  INFO 81966 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-02-11T12:15:42.948+01:00  INFO 81966 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-02-11T12:15:42.963+01:00  INFO 81966 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-11T12:15:43.003+01:00  INFO 81966 --- [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-11T12:15:43.186+01:00  INFO 81966 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-11T12:15:43.208+01:00  WARN 81966 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-11T12:15:43.215+01:00  INFO 81966 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:testdb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: TESTDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-11T12:15:43.621+01:00  INFO 81966 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists category cascade 
+Hibernate: drop table if exists notes cascade 
+Hibernate: drop table if exists roles cascade 
+Hibernate: drop table if exists users cascade 
+Hibernate: drop table if exists users_roles cascade 
+Hibernate: create table category (id bigint generated by default as identity, name varchar(255), primary key (id))
+Hibernate: create table notes (category_id bigint, id bigint generated by default as identity, content varchar(255), title varchar(255) not null, primary key (id))
+Hibernate: create table roles (id bigint generated by default as identity, name varchar(255), primary key (id))
+Hibernate: create table users (id bigint generated by default as identity, password varchar(255), username varchar(255), primary key (id))
+Hibernate: create table users_roles (roles_id bigint not null, user_id bigint not null, primary key (roles_id, user_id))
+Hibernate: alter table if exists notes add constraint FKcj0t34ccxr2h8f1lit50od4qi foreign key (category_id) references category
+Hibernate: alter table if exists users_roles add constraint FKa62j07k5mhgifpp955h37ponj foreign key (roles_id) references roles
+Hibernate: alter table if exists users_roles add constraint FK2o0jvgh89lemvvo17cbqvdxaa foreign key (user_id) references users
+2026-02-11T12:15:43.644+01:00  INFO 81966 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-11T12:15:44.186+01:00  INFO 81966 --- [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-11T12:15:44.324+01:00  WARN 81966 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-11T12:15:44.490+01:00  INFO 81966 --- [           main] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-02-11T12:15:44.509+01:00  INFO 81966 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-02-11T12:15:44.610+01:00  INFO 81966 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 9090 (http) with context path '/'
+2026-02-11T12:15:44.614+01:00  INFO 81966 --- [           main] com.example.demo.DemoApplication         : Started DemoApplication in 2.572 seconds (process running for 2.731)
+Hibernate: select r1_0.id,r1_0.name from roles r1_0 where r1_0.name=?
+Hibernate: insert into roles (name,id) values (?,default)
+Hibernate: select r1_0.id,r1_0.name from roles r1_0 where r1_0.name=?
+Hibernate: insert into roles (name,id) values (?,default)
+Hibernate: select u1_0.id,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: insert into users (password,username,id) values (?,?,default)
+Hibernate: insert into users_roles (user_id,roles_id) values (?,?)
+Hibernate: select u1_0.id,u1_0.password,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: insert into users (password,username,id) values (?,?,default)
+Hibernate: insert into users_roles (user_id,roles_id) values (?,?)
+2026-02-11T12:15:45.020+01:00  WARN 81966 --- [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-02-11T12:15:45.020+01:00  WARN 81966 --- [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-02-11T12:15:52.614+01:00  INFO 81966 --- [nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-11T12:15:52.615+01:00  INFO 81966 --- [nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-02-11T12:15:52.615+01:00  INFO 81966 --- [nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-02-11T12:24:14.137+01:00  INFO 81966 --- [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-11T12:24:14.147+01:00  INFO 81966 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-02-11T12:24:14.152+01:00  INFO 81966 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: drop table if exists category cascade 
+Hibernate: drop table if exists notes cascade 
+Hibernate: drop table if exists roles cascade 
+Hibernate: drop table if exists users cascade 
+Hibernate: drop table if exists users_roles cascade 
+2026-02-11T12:24:14.159+01:00  INFO 81966 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-02-11T12:24:14.161+01:00  INFO 81966 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  08:33 min
+[INFO] Finished at: 2026-02-11T12:24:14+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:4.0.1:run (default-cli) on project demo: Process terminated with exit code: 143 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

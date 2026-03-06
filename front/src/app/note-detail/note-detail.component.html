@@ -1,0 +1,12 @@
+<div class="note-detail-container" *ngIf="note">
+    <div class="note-card">
+        <h1>{{ note.title }}</h1>
+        <p>{{ note.content }}</p>
+        <div class="actions">
+            <a routerLink="/notes" class="back-link">Back to list</a>
+        </div>
+    </div>
+</div>
+<div *ngIf="!note">
+    <p>Loading...</p>
+</div>

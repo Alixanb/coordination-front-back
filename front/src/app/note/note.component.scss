@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  background-color: #fef3c7; /* Amber-100/Post-it yellow */
+  color: #78350f; /* Amber-900 */
+  padding: 1.5rem;
+  width: 200px;
+  height: 200px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; /* Playful font for notes */
+  transition: transform 0.2s ease-in-out;
+
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+
+    &:first-child {
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

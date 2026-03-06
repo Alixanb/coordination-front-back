@@ -1,0 +1,11 @@
+
+
+@if (notes.length > 0) {
+  @for (note of notes; track note.id) {
+    <app-note [note]="note" (deleted)="deleteNote($event)"></app-note>
+  }
+} @else {
+  <div class="empty-state">
+    <p>No notes found. Create some data!</p>
+  </div>
+}
