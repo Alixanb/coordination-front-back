@@ -34,7 +34,7 @@ export class NoteListComponent implements OnInit {
   deleteNote(id: number) {
     this.noteService.deleteNote(id).subscribe({
       next: () => {
-        this.notes = this.notes.filter(n => n.id !== id);
+        this.notes = this.notes?.filter(n => n.id !== id) ?? [];
       },
       error: (err) => {
         console.error('Failed to delete note:', err);
