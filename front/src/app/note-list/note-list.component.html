@@ -3,9 +3,15 @@
     <h1 class="board-title">My Notes</h1>
   </div>
 
-  @if (notes === undefined) {
+  @if (backendError) {
+    <div class="empty-state error-state">
+      <p class="empty-icon">⚠️</p>
+      <p class="empty-text">Backend unreachable</p>
+      <p class="empty-hint">Make sure the backend is running on port 9090 (<code>cd demo && ./mvnw spring-boot:run</code>).</p>
+    </div>
+  } @else if (notes === undefined) {
     <div class="empty-state">
-      <p>Loading…</p>
+      <p class="empty-text">Loading…</p>
     </div>
   } @else if (notes.length > 0) {
     <div class="notes-grid">

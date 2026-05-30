@@ -15,7 +15,8 @@ export class NoteListComponent implements OnInit {
   private noteService = inject(NoteService);
 
 
-  notes!: NoteModel[];
+  notes: NoteModel[] | undefined = undefined;
+  backendError = false;
 
   ngOnInit(): void {
     this.noteService.getNotes().subscribe({
@@ -24,6 +25,8 @@ export class NoteListComponent implements OnInit {
       },
       error: (err) => {
         console.error('Failed to load notes:', err);
+        this.backendError = true;
+        this.notes = [];
       }
     });
   }

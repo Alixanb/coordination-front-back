@@ -45,5 +45,17 @@
   .empty-hint {
     font-size: 0.875rem;
     color: var(--color-ink-light);
+
+    code {
+      font-family: monospace;
+      background: rgba(120, 53, 15, 0.1);
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      font-size: 0.85em;
+    }
+  }
+
+  &.error-state .empty-text {
+    color: #b91c1c;
   }
 }
