@@ -1,11 +1,23 @@
-
-
-@if (notes.length > 0) {
-  @for (note of notes; track note.id) {
-    <app-note [note]="note" (deleted)="deleteNote($event)"></app-note>
-  }
-} @else {
-  <div class="empty-state">
-    <p>No notes found. Create some data!</p>
+<div class="board">
+  <div class="board-header">
+    <h1 class="board-title">My Notes</h1>
   </div>
-}
+
+  @if (notes === undefined) {
+    <div class="empty-state">
+      <p>Loading…</p>
+    </div>
+  } @else if (notes.length > 0) {
+    <div class="notes-grid">
+      @for (note of notes; track note.id) {
+        <app-note [note]="note" (deleted)="deleteNote($event)"></app-note>
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <p class="empty-icon">📝</p>
+      <p class="empty-text">No notes yet.</p>
+      <p class="empty-hint">Sign in as admin and create your first note via the API.</p>
+    </div>
+  }
+</div>

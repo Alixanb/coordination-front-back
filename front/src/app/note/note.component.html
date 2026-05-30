@@ -1,6 +1,5 @@
-<div [routerLink]="['/notes', note.id]" class="note-link">
-  <p>note works!</p>
-  <p class="note-title">{{note.title}}</p>
-  <p class="note-content-preview">{{note.content | slice:0:50}}{{note.content.length > 50 ? '...' : ''}}</p>
-  <button class="delete-btn" (click)="onDelete($event)">Delete</button>
+<div [routerLink]="['/notes', note.id]" class="note-card">
+  <p class="note-title">{{ note.title }}</p>
+  <p class="note-preview">{{ note.content | slice:0:80 }}{{ note.content.length > 80 ? '…' : '' }}</p>
+  <button class="delete-btn" (click)="onDelete($event)" title="Delete note">✕</button>
 </div>

@@ -51,8 +51,8 @@ describe('NoteDetailComponent', () => {
     fixture.detectChanges();
 
     expect(noteServiceMock.getById).toHaveBeenCalledWith(1);
-    const title = fixture.debugElement.query(By.css('.note-detail-container h1'));
-    const content = fixture.debugElement.query(By.css('.note-detail-container p'));
+    const title = fixture.debugElement.query(By.css('.note-title'));
+    const content = fixture.debugElement.query(By.css('.note-content'));
     expect(title.nativeElement.textContent).toContain('Test Note');
     expect(content.nativeElement.textContent).toContain('Test Content');
   });
@@ -64,7 +64,7 @@ describe('NoteDetailComponent', () => {
 
     const backLink = fixture.debugElement.query(By.css('.back-link'));
     expect(backLink).toBeTruthy();
-    expect(backLink.nativeElement.textContent).toContain('Back to list');
+    expect(backLink.nativeElement.textContent).toContain('Back to board');
   });
 
   it('doit ne pas appeler getById si id est absent', () => {

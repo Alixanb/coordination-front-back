@@ -28,7 +28,7 @@ describe('NoteComponent', () => {
 
   it('doit render title and content', () => {
     const titleElement = fixture.debugElement.query(By.css('.note-title')).nativeElement;
-    const contentElement = fixture.debugElement.query(By.css('.note-content-preview')).nativeElement;
+    const contentElement = fixture.debugElement.query(By.css('.note-preview')).nativeElement;
     
     expect(titleElement.textContent).toContain('Test Title');
     expect(contentElement.textContent).toContain('Test Content');

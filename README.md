@@ -8,7 +8,7 @@ Application fullstack de prise de notes avec authentification JWT, catégorisati
 |--------|------------|
 | Backend | Java 17 · Spring Boot 4 · Spring Security OAuth2/JWT · Spring Data JPA |
 | Base de données | H2 in-memory |
-| Frontend | Angular 21 · TypeScript 5.9 · RxJS 7.8 |
+| Frontend | Angular 21 · TypeScript 5.9 · RxJS 7.8 · SCSS |
 | Tests unitaires | JUnit (backend) · Jest (frontend) |
 | Tests E2E | Cypress |
 | Build backend | Maven Wrapper (`./mvnw`) |
@@ -21,6 +21,8 @@ Application fullstack de prise de notes avec authentification JWT, catégorisati
 ```
 
 Le script démarre le backend (port **9090**) et le frontend (port **4200**), puis ouvre **http://localhost:4200**.
+
+> **Design** : l'interface utilise une esthétique "corkboard" avec les polices **Caveat** (écriture manuscrite pour les notes) et **Inter** (UI chrome). Un accès internet est requis au premier chargement pour récupérer ces polices depuis Google Fonts.
 
 Les logs sont écrits dans `backend.log` et `frontend.log` à la racine du projet.
 

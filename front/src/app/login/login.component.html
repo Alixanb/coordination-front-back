@@ -1,18 +1,18 @@
-<div class="login-container">
+<div class="login-page">
   <div class="login-card">
-    <h2>Login</h2>
+    <h1 class="login-heading">Sign in to your board</h1>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" id="username" formControlName="username" placeholder="Enter username">
+        <input type="text" id="username" formControlName="username" placeholder="Enter username" autocomplete="username">
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" formControlName="password" placeholder="Enter password">
+        <input type="password" id="password" formControlName="password" placeholder="Enter password" autocomplete="current-password">
       </div>
-      <div *ngIf="error" class="error-message">
-        {{ error }}
-      </div>
+      @if (error) {
+        <p class="error-message">{{ error }}</p>
+      }
       <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
     </form>
   </div>

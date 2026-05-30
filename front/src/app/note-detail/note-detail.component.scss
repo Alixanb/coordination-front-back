@@ -1,53 +1,78 @@
-.note-detail-container {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    background-color: #f3f4f6;
-    min-height: 100vh;
+.detail-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 2rem;
+  min-height: calc(100vh - 60px);
 }
 
 .note-card {
-    background-color: #fef3c7; /* Post-it yellow */
-    color: #78350f;
-    padding: 3rem;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 4px; /* Slight radius */
-    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
-    transform: rotate(1deg); /* Slight rotation for effect */
-    position: relative;
+  background-color: var(--color-note);
+  color: var(--color-ink);
+  padding: 3rem 3rem 2.5rem;
+  width: 100%;
+  max-width: 640px;
+  box-shadow: 5px 6px 20px var(--color-shadow-strong);
+  border-radius: var(--radius-card);
+  font-family: var(--font-note);
+  transform: rotate(0.8deg);
+  position: relative;
 
-    h1 {
-        margin-top: 0;
-        border-bottom: 2px solid rgba(120, 53, 15, 0.2);
-        padding-bottom: 1rem;
-        margin-bottom: 1.5rem;
-    }
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background-color: var(--color-note-dark);
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+  }
+}
 
-    p {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        white-space: pre-wrap; /* Preserve formatting */
-    }
+.note-title {
+  font-size: 2rem;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(120, 53, 15, 0.2);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
 
-    .actions {
-        margin-top: 2rem;
-        text-align: right;
+.note-content {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
 
-        .back-link {
-            color: #92400e;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 1rem;
-            border: 2px solid #92400e;
-            border-radius: 4px;
-            transition: all 0.2s;
+.actions {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
 
-            &:hover {
-                background-color: #92400e;
-                color: #fef3c7;
-            }
-        }
-    }
+.back-link {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-ink-light);
+  border: 2px solid var(--color-ink-muted);
+  border-radius: var(--radius-ui);
+  padding: 0.4rem 0.9rem;
+  transition: background-color 0.15s, color 0.15s;
+
+  &:hover {
+    background-color: var(--color-ink);
+    color: var(--color-note);
+    border-color: var(--color-ink);
+  }
+}
+
+.loading {
+  font-family: var(--font-note);
+  font-size: 1.25rem;
+  color: var(--color-ink-muted);
+  padding: 4rem;
+  text-align: center;
 }

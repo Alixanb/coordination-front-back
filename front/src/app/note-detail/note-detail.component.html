@@ -1,12 +1,15 @@
-<div class="note-detail-container" *ngIf="note">
+<div class="detail-page">
+  @if (note) {
     <div class="note-card">
-        <h1>{{ note.title }}</h1>
-        <p>{{ note.content }}</p>
-        <div class="actions">
-            <a routerLink="/notes" class="back-link">Back to list</a>
-        </div>
+      <h1 class="note-title">{{ note.title }}</h1>
+      <p class="note-content">{{ note.content }}</p>
+      <div class="actions">
+        <a routerLink="/notes" class="back-link">← Back to board</a>
+      </div>
     </div>
-</div>
-<div *ngIf="!note">
-    <p>Loading...</p>
+  } @else {
+    <div class="loading">
+      <p>Loading note…</p>
+    </div>
+  }
 </div>

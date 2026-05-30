@@ -1,6 +1,49 @@
 :host {
+  display: block;
+}
+
+.board {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.board-header {
+  margin-bottom: 2rem;
+}
+
+.board-title {
+  font-family: var(--font-note);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.notes-grid {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-ink-muted);
+
+  .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .empty-text {
+    font-family: var(--font-note);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .empty-hint {
+    font-size: 0.875rem;
+    color: var(--color-ink-light);
+  }
 }
