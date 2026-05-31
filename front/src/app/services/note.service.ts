@@ -22,6 +22,10 @@ export class NoteService {
     return this.http.get<NoteModel>(`${this.apiUrl}/${id}`);
   }
 
+  public createNote(title: string, content: string) {
+    return this.http.post<NoteModel>(this.apiUrl, { title, content });
+  }
+
   public deleteNote(id: number) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }

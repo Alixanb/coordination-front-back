@@ -2,8 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { of, throwError } from 'rxjs';
+import { signal } from '@angular/core';
 
 import { NoteModel } from '../models/note';
+import { AuthService } from '../services/auth.service';
 import { NoteService } from '../services/note.service';
 import { NoteListComponent } from './note-list.component';
 
@@ -11,18 +13,25 @@ describe('NoteListComponent', () => {
   let component: NoteListComponent;
   let fixture: ComponentFixture<NoteListComponent>;
   let noteServiceMock: any;
+  let authServiceMock: any;
 
   beforeEach(async () => {
     noteServiceMock = {
       getNotes: jest.fn().mockReturnValue(of([])),
       deleteNote: jest.fn().mockReturnValue(of(null)),
+      createNote: jest.fn().mockReturnValue(of(new NoteModel(3, 'New', 'Content'))),
+    };
+
+    authServiceMock = {
+      isAuthenticated: signal(false),
     };
 
     await TestBed.configureTestingModule({
       imports: [NoteListComponent],
       providers: [
         provideRouter([]),
-        { provide: NoteService, useValue: noteServiceMock }
+        { provide: NoteService, useValue: noteServiceMock },
+        { provide: AuthService, useValue: authServiceMock },
       ],
     })
 

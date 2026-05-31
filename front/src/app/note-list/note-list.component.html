@@ -1,7 +1,23 @@
 <div class="board">
   <div class="board-header">
     <h1 class="board-title">My Notes</h1>
+    @if (auth.isAuthenticated()) {
+      <button class="add-btn" (click)="showCreateForm = !showCreateForm">
+        {{ showCreateForm ? 'Cancel' : '+ New note' }}
+      </button>
+    }
   </div>
+
+  @if (showCreateForm) {
+    <form class="create-form" [formGroup]="createForm" (ngSubmit)="submitCreate()">
+      <input class="create-input" type="text" formControlName="title" placeholder="Title" autocomplete="off">
+      <textarea class="create-textarea" formControlName="content" placeholder="Write your note…" rows="4"></textarea>
+      @if (createError) {
+        <p class="create-error">{{ createError }}</p>
+      }
+      <button class="create-submit" type="submit" [disabled]="createForm.invalid">Add note</button>
+    </form>
+  }
 
   @if (backendError) {
     <div class="empty-state error-state">
@@ -23,7 +39,11 @@
     <div class="empty-state">
       <p class="empty-icon">📝</p>
       <p class="empty-text">No notes yet.</p>
-      <p class="empty-hint">Sign in as admin and create your first note via the API.</p>
+      @if (auth.isAuthenticated()) {
+        <p class="empty-hint">Click <strong>+ New note</strong> above to create your first note.</p>
+      } @else {
+        <p class="empty-hint">Sign in as admin to create notes.</p>
+      }
     </div>
   }
 </div>
