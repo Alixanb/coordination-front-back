@@ -20,6 +20,15 @@ export class LoginComponent {
 
   error = '';
 
+  readonly testAccounts = [
+    { username: 'admin', password: 'password', role: 'Admin', hint: 'read + create' },
+    { username: 'user',  password: 'password', role: 'User',  hint: 'read only' },
+  ];
+
+  fillCredentials(username: string, password: string) {
+    this.loginForm.setValue({ username, password });
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;

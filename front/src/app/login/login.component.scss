@@ -102,3 +102,64 @@ button {
     cursor: not-allowed;
   }
 }
+
+.credentials-hint {
+  margin-top: 1.5rem;
+  border-top: 1.5px dashed var(--color-ui-border);
+  padding-top: 1rem;
+}
+
+.hint-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.hint-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hint-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(120, 53, 15, 0.06);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s, border-color 0.15s;
+  width: 100%;
+
+  &:hover {
+    background: rgba(120, 53, 15, 0.12);
+    border-color: var(--color-ui-border);
+  }
+}
+
+.hint-role {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.hint-user {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--color-ink-light);
+}
+
+.hint-perm {
+  font-size: 0.7rem;
+  color: var(--color-ink-muted);
+  white-space: nowrap;
+}

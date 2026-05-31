@@ -15,5 +15,18 @@
       }
       <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
     </form>
+
+    <div class="credentials-hint">
+      <p class="hint-label">Test accounts — click to fill</p>
+      <div class="hint-table">
+        @for (account of testAccounts; track account.username) {
+          <button type="button" class="hint-row" (click)="fillCredentials(account.username, account.password)">
+            <span class="hint-role">{{ account.role }}</span>
+            <span class="hint-user">{{ account.username }} / {{ account.password }}</span>
+            <span class="hint-perm">{{ account.hint }}</span>
+          </button>
+        }
+      </div>
+    </div>
   </div>
 </div>
