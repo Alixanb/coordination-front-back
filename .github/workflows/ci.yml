@@ -1,6 +1,10 @@
 name: GitHub Actions
 run-name: ${{ github.actor }}'s CI
-on: [push]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 env:
   CYPRESS_FOLDER: front/dist
@@ -52,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           working-directory: front
-          name: ${{ env.CYPRESS_FOLDER }}
+          name: dist
           path: ${{ env.CYPRESS_FOLDER }}
           if-no-files-found: error
 
@@ -66,7 +70,7 @@ jobs:
         uses: actions/download-artifact@v6
         with:
           working-directory: front
-          name: ${{ env.CYPRESS_FOLDER }}
+          name: dist
           path: ${{ env.CYPRESS_FOLDER }}
 
       - name: Cypress run
