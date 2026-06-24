@@ -2,8 +2,8 @@ name: GitHub Actions
 run-name: ${{ github.actor }}'s CI
 on: [push]
 
-env: 
-  CYPRESS_FOLDER: build
+env:
+  CYPRESS_FOLDER: front/dist
 
 jobs:
   backend-tests:
@@ -44,29 +44,34 @@ jobs:
       - name: Cypress Run
         uses: cypress-io/github-action@v7
         with:
+          working-directory: front
           runTests: false
           build: npm run build
 
       - name: Save build folder
         uses: actions/upload-artifact@v6
         with:
-          name: $CYPRESS_FOLDER
-          path: $CYPRESS_FOLDER
+          working-directory: front
+          name: ${{ env.CYPRESS_FOLDER }}
+          path: ${{ env.CYPRESS_FOLDER }}
           if-no-files-found: error
 
   cypress-run:
     needs: cypress-install
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
 
-        name: Download build folder
+      - name: Download build folder
         uses: actions/download-artifact@v6
         with:
-          name: $CYPRESS_FOLDER
-          path: $CYPRESS_FOLDER
+          working-directory: front
+          name: ${{ env.CYPRESS_FOLDER }}
+          path: ${{ env.CYPRESS_FOLDER }}
 
       - name: Cypress run
         uses: cypress-io/github-action@v7
-        with: 
+        with:
+          working-directory: front
           start: npm run e2e:ci
           browser: chrome
