@@ -1,0 +1,13 @@
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Java / Maven build output
+demo/target/
+target/
+
+# IDE
+.vscode/
+.idea/
