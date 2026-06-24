@@ -25,4 +25,7 @@ jobs:
           node-version: "24"
           cache: npm
       - name: "Run frontend tests"
-        run: cd front && npm run test
+        working-directory: front
+        run: |
+          npm ci
+          npm run test
