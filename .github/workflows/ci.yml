@@ -1,0 +1,72 @@
+name: GitHub Actions
+run-name: ${{ github.actor }}'s CI
+on: [push]
+
+env: 
+  CYPRESS_FOLDER: build
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+      - name: Build with maven
+        run: mvn clean test --file demo/pom.xml
+
+  frontend-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install node modules
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: front/package-lock.json
+      - name: "Run frontend tests"
+        working-directory: front
+        run: |
+          npm ci
+          npm run test
+
+  cypress-install:
+    needs: [backend-tests, frontend-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Cypress Run
+        uses: cypress-io/github-action@v7
+        with:
+          runTests: false
+          build: npm run build
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v6
+        with:
+          name: $CYPRESS_FOLDER
+          path: $CYPRESS_FOLDER
+          if-no-files-found: error
+
+  cypress-run:
+    needs: cypress-install
+    steps:
+      - uses: actions/checkout@v6
+
+        name: Download build folder
+        uses: actions/download-artifact@v6
+        with:
+          name: $CYPRESS_FOLDER
+          path: $CYPRESS_FOLDER
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v7
+        with: 
+          start: npm run e2e:ci
+          browser: chrome

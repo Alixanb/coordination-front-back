@@ -3,6 +3,10 @@
 # Compiled output
 /dist
 /tmp
+
+# Cypress artifacts
+/cypress/screenshots
+/cypress/videos
 /out-tsc
 /bazel-out
 

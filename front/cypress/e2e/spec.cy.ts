@@ -4,7 +4,7 @@ describe('Login Page', () => {
   });
 
   it('should display the login form', () => {
-    cy.get('h2').contains('Login');
+    cy.get('h1.login-heading').should('contain', 'Sign in');
     cy.get('#username').should('exist');
     cy.get('#password').should('exist');
     cy.get('button[type="submit"]').contains('Sign In').should('be.disabled');
@@ -120,9 +120,8 @@ describe('Note List Page', () => {
     cy.visit('/notes');
     cy.wait('@getNotes');
 
-    cy.get('router-outlet + app-note-list .note-content-preview').last().invoke('text').then((text) => {
-      expect(text.length).to.be.lessThan(60);
-      expect(text).to.include('...');
+    cy.get('router-outlet + app-note-list .note-preview').last().invoke('text').then((text) => {
+      expect(text).to.include('…');
     });
   });
 
@@ -135,8 +134,8 @@ describe('Note List Page', () => {
     cy.visit('/notes');
     cy.wait('@getNotes');
 
-    cy.get('router-outlet + app-note-list .note-content-preview').first().invoke('text').then((text) => {
-      expect(text).to.not.include('...');
+    cy.get('router-outlet + app-note-list .note-preview').first().invoke('text').then((text) => {
+      expect(text).to.not.include('…');
     });
   });
 
@@ -149,7 +148,7 @@ describe('Note List Page', () => {
     cy.visit('/notes');
     cy.wait('@getNotes');
 
-    cy.get('router-outlet + app-note-list .empty-state').should('contain', 'No notes found');
+    cy.get('router-outlet + app-note-list .empty-state').should('contain', 'No notes yet');
   });
 
   it('should navigate to note detail on click', () => {
@@ -166,7 +165,7 @@ describe('Note List Page', () => {
     cy.visit('/notes');
     cy.wait('@getNotes');
 
-    cy.get('router-outlet + app-note-list .note-link').first().click();
+    cy.get('router-outlet + app-note-list .note-card').first().click();
     cy.url().should('include', '/notes/1');
   });
 
@@ -243,15 +242,15 @@ describe('Note Detail Page', () => {
     cy.visit('/notes/1');
     cy.wait('@getNoteDetail');
 
-    cy.get('.note-detail-container h1').should('contain', 'Test Note');
-    cy.get('.note-detail-container p').should('contain', 'This is the full content of the test note');
+    cy.get('.detail-page .note-title').should('contain', 'Test Note');
+    cy.get('.detail-page .note-content').should('contain', 'This is the full content of the test note');
   });
 
   it('should navigate back to notes list', () => {
     cy.visit('/notes/1');
     cy.wait('@getNoteDetail');
 
-    cy.get('.back-link').contains('Back to list').click();
+    cy.get('.back-link').contains('Back to board').click();
     cy.url().should('include', '/notes');
   });
 
@@ -263,9 +262,9 @@ describe('Note Detail Page', () => {
     }).as('getDelayedNote');
 
     cy.visit('/notes/2');
-    cy.contains('Loading...').should('exist');
+    cy.contains('Loading note').should('exist');
     cy.wait('@getDelayedNote');
-    cy.get('.note-detail-container h1').should('contain', 'Delayed');
+    cy.get('.detail-page .note-title').should('contain', 'Delayed');
   });
 
   it('should handle 404 when note does not exist', () => {
@@ -277,6 +276,6 @@ describe('Note Detail Page', () => {
     cy.visit('/notes/999');
     cy.wait('@getNoteNotFound');
 
-    cy.get('.note-detail-container').should('not.exist');
+    cy.get('.detail-page .note-card').should('not.exist');
   });
 });
