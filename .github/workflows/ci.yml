@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: ["main"]
 
-env:
-  CYPRESS_FOLDER: front/dist
-
 jobs:
   backend-tests:
     runs-on: ubuntu-latest
@@ -39,43 +36,15 @@ jobs:
           npm ci
           npm run test
 
-  cypress-install:
+  cypress-run:
     needs: [backend-tests, frontend-tests]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-
-      - name: Cypress Run
-        uses: cypress-io/github-action@v7
-        with:
-          working-directory: front
-          runTests: false
-          build: npm run build
-
-      - name: Save build folder
-        uses: actions/upload-artifact@v6
-        with:
-          working-directory: front
-          name: dist
-          path: ${{ env.CYPRESS_FOLDER }}
-          if-no-files-found: error
-
-  cypress-run:
-    needs: cypress-install
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Download build folder
-        uses: actions/download-artifact@v6
-        with:
-          working-directory: front
-          name: dist
-          path: ${{ env.CYPRESS_FOLDER }}
-
       - name: Cypress run
         uses: cypress-io/github-action@v7
         with:
           working-directory: front
-          start: npm run e2e:ci
+          start: npm start
+          wait-on: "http://127.0.0.1:4200"
           browser: chrome
