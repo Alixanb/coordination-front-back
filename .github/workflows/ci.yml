@@ -41,10 +41,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: front/package-lock.json
       - name: Cypress run
         uses: cypress-io/github-action@v7
         with:
           working-directory: front
-          start: npm start
+          start: npm start -- --host 127.0.0.1
           wait-on: "http://127.0.0.1:4200"
           browser: chrome
