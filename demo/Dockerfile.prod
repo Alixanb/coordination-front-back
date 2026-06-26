@@ -1,0 +1,5 @@
+# Maven
+FROM maven:3.8.4-openjdk-11-slim AS build
+COPY target/*.jar app.jar
+
+CMD ["java", "-jar", "my-application.jar"]
