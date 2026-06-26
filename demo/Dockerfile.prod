@@ -1,5 +1,6 @@
-# Maven
-FROM maven:3.8.4-openjdk-11-slim AS build
+FROM eclipse-temurin:17-jre
+WORKDIR /demo
 COPY target/*.jar app.jar
 
-CMD ["java", "-jar", "my-application.jar"]
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]
