@@ -13,14 +13,14 @@
       <input class="create-input" type="text" formControlName="title" placeholder="Title" autocomplete="off">
       <textarea class="create-textarea" formControlName="content" placeholder="Write your note…" rows="4"></textarea>
       @if (createError) {
-        <p class="create-error">{{ createError }}</p>
+        <p class="create-error" role="alert">{{ createError }}</p>
       }
       <button class="create-submit" type="submit" [disabled]="createForm.invalid">Add note</button>
     </form>
   }
 
   @if (backendError) {
-    <div class="empty-state error-state">
+    <div class="empty-state error-state" role="alert">
       <p class="empty-icon">⚠️</p>
       <p class="empty-text">Backend unreachable</p>
       <p class="empty-hint">Make sure the backend is running on port 9090 (<code>cd demo && ./mvnw spring-boot:run</code>).</p>

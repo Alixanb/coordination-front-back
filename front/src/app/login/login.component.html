@@ -11,7 +11,7 @@
         <input type="password" id="password" formControlName="password" placeholder="Enter password" autocomplete="current-password">
       </div>
       @if (error) {
-        <p class="error-message">{{ error }}</p>
+        <p class="error-message" role="alert">{{ error }}</p>
       }
       <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
     </form>

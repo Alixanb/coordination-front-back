@@ -1,6 +1,7 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="app-header">
   <a routerLink="/notes" class="brand">Sticky Notes</a>
-  <nav class="nav-links">
+  <nav class="nav-links" aria-label="Main navigation">
     @if (auth.isAuthenticated()) {
       <button class="nav-btn" (click)="auth.logout()">Sign out</button>
     } @else {
@@ -9,4 +10,6 @@
   </nav>
 </header>
 
-<router-outlet />
+<main id="main-content">
+  <router-outlet />
+</main>
