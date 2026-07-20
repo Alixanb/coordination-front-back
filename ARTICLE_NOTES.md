@@ -20,7 +20,7 @@ Projet académique (Ynov M2) illustrant une stack moderne Java/TypeScript avec u
                                                     └─────────────────┘
 ```
 
-Aucun Docker, aucun proxy : les deux processus tournent directement sur la machine via un seul script `start.sh`.
+En développement, les deux processus tournent directement sur la machine via un seul script `start.sh` (pas de proxy). Le packaging/livraison utilise Docker : `Dockerfile.prod` (back & front) et un job CI `docker-delivery` qui publie l'image `alixanb/coordination-front-back`.
 
 ---
 
@@ -170,6 +170,6 @@ Guard `authGuard` inline dans `app.routes.ts` : vérifie `auth.isAuthenticated()
 
 - Pas de refresh token — expiration à 1h, reconnexion obligatoire
 - CORS `allowedOriginPatterns("*")` — trop permissif pour la prod
-- Mots de passe en clair dans `UserInitializator` (à chiffrer avec `BCryptPasswordEncoder`)
+- Comptes de démo à identifiants fixes (`admin/password`, `user/password`) ensemencés par `UserInitializator` — acceptable pour une démo, à remplacer par un vrai enrôlement en prod. Les mots de passe sont bien **hachés en base** via `BCryptPasswordEncoder` (`UserService.saveUser`).
 - Pas de pagination sur `GET /notes`
 - Clés RSA non persistées → tokens invalidés à chaque redémarrage
