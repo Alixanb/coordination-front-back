@@ -70,7 +70,7 @@ Angular 21, **standalone components only** (no NgModules). `app.config.ts` boots
 
 ## Known & accepted limitations
 
-These are documented, intentional trade-offs for an academic demo (see `ARTICLE_NOTES.md`). **Do not "fix" them unless explicitly asked**: no refresh token (1h re-login), fixed demo credentials seeded by `UserInitializator`, no pagination on `GET /notes`, RSA keys not persisted. (Note: passwords *are* hashed with BCrypt via `UserService.saveUser` — this is not a gap.)
+These are documented, intentional trade-offs for an academic demo (see `docs/architecture.md`). **Do not "fix" them unless explicitly asked**: no refresh token (1h re-login), fixed demo credentials seeded by `UserInitializator`, no pagination on `GET /notes`, RSA keys not persisted. (Note: passwords *are* hashed with BCrypt via `UserService.saveUser` — this is not a gap.)
 
 ## CI/CD
 
