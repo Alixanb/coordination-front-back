@@ -15,8 +15,6 @@ export class AuthService {
   // Signal to track authentication state reactively
   isAuthenticated = signal<boolean>(this.hasToken());
 
-  constructor() {}
-
   login(username: string, password: string) {
     const headers = new HttpHeaders({
       Authorization: 'Basic ' + btoa(username + ':' + password)
