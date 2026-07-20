@@ -9,7 +9,9 @@ Mise en conformité pour le dossier professionnel Bloc 2 (RNCP) et durcissement 
 
 ### Ajouté
 - **Dossier technique** complet dans `docs/` : environnements, protocoles CI/CD, critères qualité, sécurité OWASP, accessibilité, cahier de recettes, plan de correction des bogues, 3 manuels (déploiement, utilisation, mise à jour), sommaire de lecture jury.
-- **ADR** (`docs/adr/`) : 5 décisions d'architecture documentées.
+- **ADR** (`docs/adr/`) : 7 décisions d'architecture documentées, dont [0006 — User stories](docs/adr/0006-user-stories.md) (backlog fonctionnel formalisé : 9 US reliées à leurs tests) et [0007 — Stratégie de tests & couverture](docs/adr/0007-strategie-tests-couverture.md).
+- **Tests backend** : test d'intégration `@SpringBootTest` sur les règles d'autorisation (`SecurityIntegrationTest`) + tests unitaires `UserInitializatorTest` et `SecurityConfigTest`. Couverture JaCoCo portée de **37 % à 94 %** (instructions, build propre 815/868).
+- **Audit d'accessibilité** : rapport Lighthouse archivé dans `docs/audits/` — score **accessibilité 100/100**, `color-contrast` sans échec (palette « corkboard » conforme AA).
 - **Portes qualité CI** : JaCoCo (couverture backend), Checkstyle (non bloquant), ESLint `angular-eslint` (bloquant, incl. règles d'accessibilité), couverture Jest.
 - `CLAUDE.md` racine (documentation d'orientation du dépôt).
 
