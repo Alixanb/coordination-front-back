@@ -39,3 +39,26 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* Accessibilité : focus clavier visible sur tous les éléments interactifs */
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+/* Lien d'évitement : masqué jusqu'au focus clavier */
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--color-ink);
+  color: var(--color-ui-bg);
+  border-radius: var(--radius-ui);
+  transition: top 0.15s ease;
+
+  &:focus {
+    top: 0.5rem;
+  }
+}
