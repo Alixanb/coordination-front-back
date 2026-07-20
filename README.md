@@ -2,6 +2,8 @@
 
 Application fullstack de prise de notes avec authentification JWT, catégorisation et gestion complète des notes (CRUD).
 
+> 📚 **Dossier technique complet** (Bloc 2 RNCP) dans [`docs/`](docs/00-sommaire.md) : environnements, CI/CD, sécurité OWASP, accessibilité, cahier de recettes, manuels et ADR. Architecture détaillée : [`docs/architecture.md`](docs/architecture.md).
+
 ## Stack
 
 | Couche | Technologie |
