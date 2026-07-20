@@ -19,12 +19,12 @@ La couverture est **mesurée et publiée** à chaque build. Les seuils ci-dessou
 
 | Périmètre | Métrique | Mesuré actuellement | Cible |
 |-----------|----------|---------------------|-------|
-| Backend (JaCoCo) | Instructions | **≈ 36 %** (336/910) | ≥ 60 % |
+| Backend (JaCoCo) | Instructions | **≈ 94 %** (815/868) | ≥ 60 % |
 | Frontend (Jest) | Lignes | **≈ 76 %** (96/126) | ≥ 70 % |
 | Frontend (Jest) | Fonctions | **≈ 80 %** (24/30) | ≥ 70 % |
 | Frontend (Jest) | Branches | **≈ 50 %** (8/16) | ≥ 50 % |
 
-> La couverture backend porte surtout sur la logique métier (services, controllers) ; la configuration sécurité/JWT et le seed de données sont peu couverts par des tests unitaires (testés fonctionnellement via le cahier de recettes et Cypress).
+> La couverture backend porte à la fois sur la logique métier (services, controllers, à 100 %) et sur la configuration sécurité/JWT + seed de données, désormais couverts par un test d'intégration `@SpringBootTest` et des tests unitaires ciblés (`SecurityConfig`, `UserInitializator` à 100 %). Voir [ADR 0007 — Stratégie de tests](adr/0007-strategie-tests-couverture.md). Restent partiellement couverts quelques accesseurs d'entités (`Category`, `User`) et la méthode `main()` (mesuré sur build propre `mvn clean test` : 815/868).
 
 ## 3. Critères de performance
 

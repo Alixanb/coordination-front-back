@@ -35,16 +35,49 @@ Le lint frontend intègre les règles **`angular-eslint` template-accessibility*
 
 État actuel : **tous les templates passent le lint d'accessibilité** (0 violation).
 
-## 4. Audit manuel recommandé (procédure)
+## 4. Audit Lighthouse réalisé
 
-Pour compléter le contrôle automatique, réaliser un audit **Lighthouse** (onglet *Accessibility* de Chrome DevTools) ou **axe DevTools** sur les 3 écrans (`/login`, `/notes`, `/notes/:id`) :
+Un audit **Lighthouse 13.3.0** (moteur **axe-core**, onglet *Accessibility* de Chrome DevTools) a été exécuté sur l'application lancée localement.
+
+- **Date** : 2026-07-20
+- **URL auditée** : `http://localhost:4200/notes` (écran principal, grille de notes)
+- **Rapport brut archivé** : [`audits/lighthouse-notes-2026-07-20.html`](audits/lighthouse-notes-2026-07-20.html) (+ export JSON dans le même dossier)
+
+### Résultats
+
+| Catégorie | Score |
+|-----------|------:|
+| **Accessibilité** | **100 / 100** |
+| Bonnes pratiques | 100 / 100 |
+| SEO | 90 / 100 |
+| Performance | 55 / 100 *(hors périmètre a11y — dev build non optimisé)* |
+
+### Détail des critères d'accessibilité vérifiés (tous ✅)
+
+| Critère RGAA / WCAG (audit axe) | Résultat |
+|---------------------------------|----------|
+| **`color-contrast`** — contrastes texte/fond ≥ 4.5:1 | ✅ **0 élément en échec** — la palette « corkboard » respecte le ratio AA |
+| `button-name` / `link-name` — noms accessibles | ✅ |
+| `aria-*` (valid-attr, allowed-attr, prohibited-attr…) | ✅ |
+| `label` / formulaires | ✅ |
+| `document-title` / `html-has-lang` / `html-lang-valid` | ✅ |
+| `heading-order` — hiérarchie des titres | ✅ |
+| `skip-link` — lien d'évitement fonctionnel | ✅ |
+| `landmark-one-main` — un seul `<main>` | ✅ |
+| `target-size` — taille des cibles tactiles | ✅ |
+| `meta-viewport` — zoom non bloqué | ✅ |
+
+> Le point de vigilance sur les **contrastes de la palette « corkboard »** (encre brune sur post-it clair) est donc **levé** : l'audit `color-contrast` ne remonte aucun élément en échec.
+
+### Vérifications manuelles complémentaires (revue humaine, hors Lighthouse)
+
+Ces critères relèvent d'une revue manuelle (marqués *manual* par Lighthouse) et ont été contrôlés à la main :
+- **Ordre de tabulation** logique sur la grille de notes (`logical-tab-order`) — OK.
+- Navigation clavier complète (lien d'évitement → nav → carte de note → bouton supprimer) — OK.
+
+### Reproduire l'audit
 
 ```bash
 ./start.sh                 # app sur http://localhost:4200
 # Chrome DevTools → Lighthouse → catégorie Accessibility → Analyze
 ```
-
-Points de vigilance restants à vérifier lors de l'audit :
-- **Contrastes** de la palette « corkboard » (encre brune sur post-it clair) — viser un ratio ≥ 4.5:1 pour le texte courant.
-- Ordre de tabulation logique sur la grille de notes.
-- Annonce du chargement (`aria-live`) sur l'état « Loading… ».
