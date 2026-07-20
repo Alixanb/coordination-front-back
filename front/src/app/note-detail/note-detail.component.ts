@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'; // Import DatePipe if needed, but not strictly required by prompt
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BasicNoteDTO } from '../models/note';
 import { NoteService } from '../services/note.service';
@@ -11,9 +11,9 @@ import { NoteService } from '../services/note.service';
   templateUrl: './note-detail.component.html',
   styleUrl: './note-detail.component.scss'
 })
-export class NoteDetailComponent {
+export class NoteDetailComponent implements OnInit {
   private noteService = inject(NoteService);
-  
+
   // Using Input Binding with Router (needs withComponentInputBinding in app.config)
   @Input() id!: string;
 
