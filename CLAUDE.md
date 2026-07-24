@@ -57,7 +57,7 @@ H2 in-memory, reseeded on every startup by `UserInitializator` (`CommandLineRunn
 ### Backend layout (`demo/src/main/java/com/example/demo/`)
 Standard Spring layering: `config/` (SecurityConfig, Jwks, UserInitializator) · `controller/` · `service/` · `repository/` (Spring Data JPA) · `entity/` · `dto/`.
 
-Backend tests use `@WebMvcTest` + MockMvc for controllers and mock-based tests for services.
+Backend controllers and services are covered by plain Mockito-based unit tests (no `@WebMvcTest`); the security chain is covered by `SecurityIntegrationTest` (`@SpringBootTest` + `@AutoConfigureMockMvc`, the only MockMvc usage).
 
 ### Frontend layout (`front/src/app/`)
 Angular 21, **standalone components only** (no NgModules). `app.config.ts` bootstraps with `provideRouter` + `provideHttpClient` + the functional interceptor. Components: `login/`, `note-list/`, `note-detail/`, `note/` (card, child of note-list). Services: `AuthService`, `NoteService`.

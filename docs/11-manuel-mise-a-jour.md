@@ -30,7 +30,7 @@ cd front && npm ci               # installe exactement le package-lock.json
 Avant tout redéploiement, valider la chaîne de tests :
 
 ```bash
-cd demo && ./mvnw test           # 18 tests backend
+cd demo && ./mvnw test           # 31 tests backend
 cd front && npm run lint         # lint (incl. accessibilité)
 cd front && npm test             # 37 tests Jest
 cd front && npm run e2e          # 20 tests Cypress

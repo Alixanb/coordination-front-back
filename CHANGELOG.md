@@ -3,7 +3,7 @@
 Toutes les évolutions notables du projet **Sticky Notes** sont documentées ici.
 Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; versionnement [sémantique](https://semver.org/lang/fr/).
 
-## [1.0.0] — 2026-07-20
+## [1.0.0] — 2026-07-24
 
 Mise en conformité pour le dossier professionnel Bloc 2 (RNCP) et durcissement du projet.
 
@@ -24,6 +24,12 @@ Mise en conformité pour le dossier professionnel Bloc 2 (RNCP) et durcissement 
 ### Supprimé
 - Code mort backend (`model/Note.java`) et stubs Angular non routés (`login/login.*`, `note-detail/note-detail.*`).
 - Classes compilées versionnées (`demo/bin/`) désormais ignorées (`bin/` ajouté au `.gitignore`).
+
+### Corrigé
+- **Livraison frontend** : le job `docker-delivery` construit et publie désormais l'image `alixanb/coordination-front` ; `front/Dockerfile.prod` corrigé (fautes de frappe, chemin de build).
+- CI backend exécutée via le Maven Wrapper (`./mvnw`) pour épingler la version de Maven.
+- `EXPOSE 9090` dans `demo/Dockerfile.prod`, aligné sur `server.port`.
+- Registre des anomalies (`docs/08`) restructuré (B1–B13 + limites assumées) et comptages de tests corrigés (18 → 31 backend).
 
 ### Sécurité
 - Mots de passe hachés avec BCrypt (déjà en place, confirmé et documenté).
