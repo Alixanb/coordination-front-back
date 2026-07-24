@@ -9,7 +9,7 @@ Le logiciel doit être livré de façon reproductible « à chaque modification 
 
 ## Décision
 
-Publier une **image Docker** de l'application via un job CI (`docker-delivery`) déclenché après des tests et builds verts. L'image backend (`eclipse-temurin:17-jre` + JAR) est poussée sur **Docker Hub** (`alixanb/coordination-front-back`).
+Publier une **image Docker** de l'application via un job CI (`docker-delivery`) déclenché après des tests et builds verts. L'image backend (`eclipse-temurin:17-jre` + JAR) est poussée sur **Docker Hub** (`alixann/coordination-front-back`).
 
 ## Conséquences
 

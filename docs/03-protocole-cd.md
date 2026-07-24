@@ -13,7 +13,7 @@
 | 1     | Récupération de l'artefact `backend.jar` (job `backend-build`) | `download-artifact`                                                |
 | 2     | Authentification Docker Hub                                    | `docker/login-action` (secrets `DOCKER_USERNAME` / `DOCKER_TOKEN`) |
 | 3     | Build de l'image à partir de `demo/Dockerfile.prod`            | `docker/build-push-action`                                         |
-| 4     | Push de l'image `alixanb/coordination-front-back:latest`       | Docker Hub                                                         |
+| 4     | Push de l'image `alixann/coordination-front-back:latest`       | Docker Hub                                                         |
 
 L'image backend est une image `eclipse-temurin:17-jre` embarquant le JAR (`app.jar`).
 
@@ -26,8 +26,8 @@ GitHub (push main) ──► CI verte ──► image Docker publiée ──► 
 Exécution de l'image publiée :
 
 ```bash
-docker pull alixanb/coordination-front-back:latest
-docker run -p 9090:9090 alixanb/coordination-front-back:latest
+docker pull alixann/coordination-front-back:latest
+docker run -p 9090:9090 alixann/coordination-front-back:latest
 ```
 
 > **Port** : l'application écoute sur **9090** (`server.port=9090`). Mapper `-p 9090:9090`. La directive `EXPOSE 8080` du `Dockerfile.prod` est purement indicative et ne correspond pas au port réel — voir [09-manuel-deploiement.md](09-manuel-deploiement.md).

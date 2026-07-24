@@ -26,7 +26,7 @@ Mise en conformité pour le dossier professionnel Bloc 2 (RNCP) et durcissement 
 - Classes compilées versionnées (`demo/bin/`) désormais ignorées (`bin/` ajouté au `.gitignore`).
 
 ### Corrigé
-- **Livraison frontend** : le job `docker-delivery` construit et publie désormais l'image `alixanb/coordination-front` ; `front/Dockerfile.prod` corrigé (fautes de frappe, chemin de build).
+- **Livraison frontend** : le job `docker-delivery` construit et publie désormais l'image `alixann/coordination-front` ; `front/Dockerfile.prod` corrigé (fautes de frappe, chemin de build).
 - CI backend exécutée via le Maven Wrapper (`./mvnw`) pour épingler la version de Maven.
 - `EXPOSE 9090` dans `demo/Dockerfile.prod`, aligné sur `server.port`.
 - Registre des anomalies (`docs/08`) restructuré (B1–B13 + limites assumées) et comptages de tests corrigés (18 → 31 backend).

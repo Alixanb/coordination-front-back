@@ -74,4 +74,4 @@ These are documented, intentional trade-offs for an academic demo (see `docs/arc
 
 ## CI/CD
 
-`.github/workflows/ci.yml` runs on push/PR to `main`: backend tests → frontend tests → Cypress → backend/frontend builds → docker delivery (pushes `alixanb/coordination-front-back` from `demo/Dockerfile.prod`). There are currently **no coverage or lint gates** in CI.
+`.github/workflows/ci.yml` runs on push/PR to `main`: backend tests → frontend tests → Cypress → backend/frontend builds → docker delivery (pushes `alixann/coordination-front-back` from `demo/Dockerfile.prod`). There are currently **no coverage or lint gates** in CI.

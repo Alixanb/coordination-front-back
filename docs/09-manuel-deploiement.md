@@ -38,8 +38,8 @@ cd front && npm ci && npm run build     # → front/dist/note/browser
 ### Backend (image publiée par la CI)
 
 ```bash
-docker pull alixanb/coordination-front-back:latest
-docker run -p 9090:9090 alixanb/coordination-front-back:latest
+docker pull alixann/coordination-front-back:latest
+docker run -p 9090:9090 alixann/coordination-front-back:latest
 ```
 
 > ⚠️ **Port** : l'application écoute sur **9090** (`server.port=9090`). Utiliser `-p 9090:9090`.

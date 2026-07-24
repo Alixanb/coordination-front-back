@@ -138,7 +138,7 @@ jobs:
           context: demo
           file: demo/Dockerfile.prod
           push: true
-          tags: alixanb/coordination-front-back:latest
+          tags: alixann/coordination-front-back:latest
 
       - name: Docker build and push frontend
         uses: docker/build-push-action@v6
@@ -146,4 +146,4 @@ jobs:
           context: front
           file: front/Dockerfile.prod
           push: true
-          tags: alixanb/coordination-front:latest
+          tags: alixann/coordination-front:latest

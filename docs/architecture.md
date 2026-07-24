@@ -20,7 +20,7 @@ Projet académique (Ynov M2) illustrant une stack moderne Java/TypeScript avec u
                                                     └─────────────────┘
 ```
 
-En développement, les deux processus tournent directement sur la machine via un seul script `start.sh` (pas de proxy). Le packaging/livraison utilise Docker : `Dockerfile.prod` (back & front) et un job CI `docker-delivery` qui publie l'image `alixanb/coordination-front-back`.
+En développement, les deux processus tournent directement sur la machine via un seul script `start.sh` (pas de proxy). Le packaging/livraison utilise Docker : `Dockerfile.prod` (back & front) et un job CI `docker-delivery` qui publie l'image `alixann/coordination-front-back`.
 
 ---
 
