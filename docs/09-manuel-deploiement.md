@@ -43,8 +43,7 @@ docker run -p 9090:9090 alixanb/coordination-front-back:latest
 ```
 
 > ⚠️ **Port** : l'application écoute sur **9090** (`server.port=9090`). Utiliser `-p 9090:9090`.
-> La ligne `EXPOSE 8080` de `demo/Dockerfile.prod` est indicative et ne reflète pas le port réel ;
-> elle peut être corrigée en `EXPOSE 9090` sans impact fonctionnel.
+> La ligne `EXPOSE 9090` de `demo/Dockerfile.prod` est alignée sur ce port.
 
 ### Frontend (image nginx)
 
