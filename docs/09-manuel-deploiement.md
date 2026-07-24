@@ -4,10 +4,10 @@
 
 ## 1. Prérequis
 
-| Environnement | Outils requis |
-|---------------|---------------|
+| Environnement         | Outils requis                  |
+| --------------------- | ------------------------------ |
 | Développement / local | Java 17+, Node.js 20+, npm 11+ |
-| Conteneur | Docker 24+ |
+| Conteneur             | Docker 24+                     |
 
 ## 2. Déploiement local (développement)
 
@@ -22,11 +22,13 @@ Puis ouvrir **http://localhost:4200**. Logs dans `backend.log` / `frontend.log`.
 ## 3. Build de production
 
 **Backend (JAR)**
+
 ```bash
 cd demo && ./mvnw package -DskipTests   # → demo/target/*.jar
 ```
 
 **Frontend (bundle statique)**
+
 ```bash
 cd front && npm ci && npm run build     # → front/dist/note/browser
 ```
@@ -47,6 +49,7 @@ docker run -p 9090:9090 alixanb/coordination-front-back:latest
 ### Frontend (image nginx)
 
 Le `front/Dockerfile.prod` sert le bundle via nginx. **Correctifs nécessaires avant build** (bogues connus, cf. [08-plan-correction-bogues.md](08-plan-correction-bogues.md)) :
+
 - `RUN rm-rf` → `RUN rm -rf`
 - `COPY dist/note/browser usr/share/nginx/html/` → `COPY dist/note/browser /usr/share/nginx/html/`
 
@@ -61,11 +64,11 @@ docker run -p 8080:80 sticky-notes-front
 
 Variables clés (via `application.properties` ou variables d'environnement Spring) :
 
-| Clé | Défaut | Rôle |
-|-----|--------|------|
-| `server.port` | `9090` | Port de l'API |
-| `app.cors.allowed-origins` | `http://localhost:4200,http://127.0.0.1:4200` | Origines CORS autorisées |
-| `spring.h2.console.enabled` | `true` | Console H2 (**à désactiver en prod**) |
+| Clé                         | Défaut                                        | Rôle                                  |
+| --------------------------- | --------------------------------------------- | ------------------------------------- |
+| `server.port`               | `9090`                                        | Port de l'API                         |
+| `app.cors.allowed-origins`  | `http://localhost:4200,http://127.0.0.1:4200` | Origines CORS autorisées              |
+| `spring.h2.console.enabled` | `true`                                        | Console H2 (**à désactiver en prod**) |
 
 En production : restreindre `app.cors.allowed-origins` au domaine réel du frontend et désactiver la console H2.
 

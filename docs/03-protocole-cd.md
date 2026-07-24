@@ -8,12 +8,12 @@
 
 ## 2. Séquences de déploiement
 
-| Étape | Action | Outil |
-|-------|--------|-------|
-| 1 | Récupération de l'artefact `backend.jar` (job `backend-build`) | `download-artifact` |
-| 2 | Authentification Docker Hub | `docker/login-action` (secrets `DOCKER_USERNAME` / `DOCKER_TOKEN`) |
-| 3 | Build de l'image à partir de `demo/Dockerfile.prod` | `docker/build-push-action` |
-| 4 | Push de l'image `alixanb/coordination-front-back:latest` | Docker Hub |
+| Étape | Action                                                         | Outil                                                              |
+| ----- | -------------------------------------------------------------- | ------------------------------------------------------------------ |
+| 1     | Récupération de l'artefact `backend.jar` (job `backend-build`) | `download-artifact`                                                |
+| 2     | Authentification Docker Hub                                    | `docker/login-action` (secrets `DOCKER_USERNAME` / `DOCKER_TOKEN`) |
+| 3     | Build de l'image à partir de `demo/Dockerfile.prod`            | `docker/build-push-action`                                         |
+| 4     | Push de l'image `alixanb/coordination-front-back:latest`       | Docker Hub                                                         |
 
 L'image backend est une image `eclipse-temurin:17-jre` embarquant le JAR (`app.jar`).
 

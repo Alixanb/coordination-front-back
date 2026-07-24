@@ -5,6 +5,7 @@
 ## 1. Déclencheurs
 
 La CI s'exécute automatiquement sur :
+
 - **push** sur la branche `main`,
 - **pull request** ciblant `main`.
 
@@ -18,14 +19,14 @@ backend-tests ─┐
 frontend-tests ┘               └─► frontend-build ──┴─► docker-delivery
 ```
 
-| Ordre | Job | Rôle | Dépend de |
-|-------|-----|------|-----------|
-| 1 | `backend-tests` | `mvn clean test` + upload rapport **JaCoCo** | — |
-| 1 | `frontend-tests` | `npm ci` → **`npm run lint`** (bloquant) → `npm run test` | — |
-| 2 | `cypress-run` | E2E Cypress (Chrome) sur l'app démarrée | backend-tests, frontend-tests |
-| 3 | `backend-build` | `mvn package` + upload artefact `backend.jar` | cypress-run |
-| 3 | `frontend-build` | `npm run build` + upload artefact `front-dist` | cypress-run |
-| 4 | `docker-delivery` | build + push image Docker Hub | backend-build, frontend-build |
+| Ordre | Job               | Rôle                                                      | Dépend de                     |
+| ----- | ----------------- | --------------------------------------------------------- | ----------------------------- |
+| 1     | `backend-tests`   | `mvn clean test` + upload rapport **JaCoCo**              | —                             |
+| 1     | `frontend-tests`  | `npm ci` → **`npm run lint`** (bloquant) → `npm run test` | —                             |
+| 2     | `cypress-run`     | E2E Cypress (Chrome) sur l'app démarrée                   | backend-tests, frontend-tests |
+| 3     | `backend-build`   | `mvn package` + upload artefact `backend.jar`             | cypress-run                   |
+| 3     | `frontend-build`  | `npm run build` + upload artefact `front-dist`            | cypress-run                   |
+| 4     | `docker-delivery` | build + push image Docker Hub                             | backend-build, frontend-build |
 
 ## 3. Séquences d'intégration détaillées
 

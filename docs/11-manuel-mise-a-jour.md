@@ -12,11 +12,13 @@ git tag --list            # versions disponibles (ex. v1.0.0)
 ## 2. Mettre à jour les dépendances
 
 **Backend** — les versions sont gérées par Maven (`demo/pom.xml`). Après un pull :
+
 ```bash
 cd demo && ./mvnw clean verify   # recompile, teste, vérifie le style
 ```
 
 **Frontend** — après modification de `package.json` :
+
 ```bash
 cd front && npm ci               # installe exactement le package-lock.json
 ```

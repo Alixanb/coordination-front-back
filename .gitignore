@@ -14,3 +14,6 @@ bin/
 .idea/
 
 .claude/
+
+# CLAUDE.md racine non désiré dans le dépôt
+/CLAUDE.md
