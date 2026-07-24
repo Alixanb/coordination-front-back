@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
-RUN rm-rf /usr/share/nginx/html/*
-COPY dist/note/browser usr/share/nginx/html/
+RUN rm -rf /usr/share/nginx/html/*
+COPY dist/frontend/browser /usr/share/nginx/html/
 
 EXPOSE 80
 
